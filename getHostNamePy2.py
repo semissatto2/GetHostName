@@ -24,7 +24,7 @@ subnet = splited_machine_ip[0]+'.'+splited_machine_ip[1]+'.'+splited_machine_ip[
 # Cria dicionario de hostname : IP
 dict_ips = {}
 
-# Varre todos IPs da sub-rede identificada
+# Varre todos IPs da sub-rede identificada. Assumindo mascara de sub-rede como 255.255.255.0 (padrao)
 for i in range(256):
     addr = subnet + str(i)
     lookup(addr)
