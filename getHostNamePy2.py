@@ -1,15 +1,16 @@
 '''
-LNLS 2018 - guilherme.semissatto@lnls.break
+LNLS 2018 - guilherme.semissatto@lnls.br
 '''
 import socket
-
+hostCounter = 0
 def lookup(addr):
+    global hostCounter
     try:
         name, alias, ipaddrlist = socket.gethostbyaddr(addr)
         ipaddrlist = str(ipaddrlist)
         dict_ips[name] = ipaddrlist[2:len(ipaddrlist)-2]
         #print '{0: <60}'.format(name) + "| " + ipaddrlist[2:len(ipaddrlist)-2]
-
+        hostCounter += 1
     except socket.herror:
         return None, None, None
 
@@ -33,6 +34,6 @@ for i in range(256):
 hostnames = dict_ips.keys()
 hostnames.sort()
 
-print "\nSORTED BY HOSTNAME:\n"
 for key in hostnames:
     print '{0: <60}'.format(key) + "| " + dict_ips[key] 
+print "Hosts found:", hostCounter
