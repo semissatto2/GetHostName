@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 '''
 LNLS 2018 - guilherme.semissatto@lnls.br
 Um script simples para impressão no terminal dos hostnames/ip's dos dispotivos encontrados na mesma sub-rede da maquina que o executa
@@ -19,7 +21,7 @@ def lookup(addr):
     except socket.herror:
         return None, None, None
 
-def subnet_ip():
+def get_subnet_ip():
 	#   Encontra IP e define sub-rede da maquina que executa este codigo, assume-se conexao com Internet
 	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 	s.connect(("8.8.8.8",80))
@@ -30,7 +32,7 @@ def subnet_ip():
 	return subnet
 
 # Programa principal
-subnet = subnet_ip()
+subnet = get_subnet_ip()
 
 # Varre todos IPs da sub-rede identificada. Assumindo mascara de sub-rede como 255.255.255.0 (padrao)
 for i in range(256):
