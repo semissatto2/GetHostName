@@ -6,6 +6,7 @@ import socket
 
 hostCounter = 0
 # Cria dicionario de { hostname : IP }
+
 dict_ips = {}
 
 def lookup(addr):
